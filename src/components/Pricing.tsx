@@ -1,28 +1,33 @@
-import { Check } from "lucide-react";
+import Icon from "@/components/ui/icon";
 
 const plans = [
   {
-    name: "Личный",
+    name: "Базовый",
     price: "Бесплатно",
-    description: "Для тех, кто начинает путь осознанной продуктивности",
-    features: ["Неспешное управление задачами", "Ежедневная сессия фокуса", "Еженедельные размышления", "Доступ в приложении"],
-    cta: "Начать бесплатно",
+    description: "Начните сортировать и зарабатывать прямо сейчас",
+    features: [
+      "QR-сканирование контейнеров",
+      "4 категории отходов",
+      "Начисление бонусных баллов",
+      "Карта ближайших мусорок",
+    ],
+    cta: "Скачать бесплатно",
     highlighted: false,
   },
   {
-    name: "Профи",
-    price: "990 ₽",
+    name: "Премиум",
+    price: "199 ₽",
     period: "/мес",
-    description: "Для тех, кто готов углубить практику",
+    description: "Больше баллов, быстрее вывод, эксклюзивные акции",
     features: [
-      "Всё из тарифа Личный",
-      "Безлимитные сессии фокуса",
-      "Расписание часов тишины",
-      "Мягкая аналитика",
-      "Синхронизация с календарём",
-      "Приоритетная поддержка",
+      "Всё из базового тарифа",
+      "Двойные бонусы за каждый визит",
+      "Приоритетный вывод средств",
+      "Эксклюзивные акции партнёров",
+      "История всех сортировок",
+      "Поддержка 24/7",
     ],
-    cta: "Начать путь",
+    cta: "Попробовать 30 дней",
     highlighted: true,
   },
 ];
@@ -32,11 +37,11 @@ export function Pricing() {
     <section id="pricing" className="py-32 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-20">
-          <span className="text-sm uppercase tracking-widest text-amber mb-4 block">Тарифы</span>
+          <span className="text-sm uppercase tracking-widest text-amber mb-4 block">Бонусная программа</span>
           <h2 className="font-serif text-4xl md:text-5xl tracking-tight text-foreground mb-4 text-balance">
-            Простые и честные цены
+            Зарабатывайте больше с Премиумом
           </h2>
-          <p className="text-muted-foreground text-lg">Без скрытых платежей. Отмена в любой момент.</p>
+          <p className="text-muted-foreground text-lg">Базовый тариф — всегда бесплатно. Отмена в любой момент.</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -65,7 +70,7 @@ export function Pricing() {
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-center gap-3">
-                    <Check size={18} className="text-sage" />
+                    <Icon name="Check" size={18} className="text-sage" />
                     <span className={plan.highlighted ? "text-primary-foreground/90" : "text-foreground"}>
                       {feature}
                     </span>

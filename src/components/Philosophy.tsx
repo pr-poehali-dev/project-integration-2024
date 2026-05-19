@@ -7,36 +7,34 @@ export function Philosophy() {
           <div className="relative aspect-[4/5] bg-muted rounded-lg overflow-hidden">
             <img
               src="/minimal-scandinavian-workspace-with-natural-light-.jpg"
-              alt="Спокойное рабочее пространство"
+              alt="Умные контейнеры для раздельного сбора"
               className="w-full h-full object-cover"
             />
             {/* Decorative accent */}
             <div className="absolute bottom-6 left-6 right-6 p-6 bg-background/90 backdrop-blur-sm rounded-lg">
               <p className="text-sm text-muted-foreground italic">
-                «Когда жизнь и работа движутся в гармонии, лучшие идеи не просто появляются — они текут сами собой.»
+                «Каждый выброшенный стакан в правильную урну — это маленький вклад в большое чистое будущее.»
               </p>
             </div>
           </div>
 
           {/* Right: Text content */}
           <div className="flex flex-col gap-8">
-            <span className="text-sm uppercase tracking-widest text-sage">Наша философия</span>
+            <span className="text-sm uppercase tracking-widest text-sage">Как это работает</span>
             <h2 className="font-serif text-4xl md:text-5xl tracking-tight text-foreground leading-tight text-balance">
-              Осознанная работа и тихий фокус
+              Три шага до чистого города и бонусов на счёт
             </h2>
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>
-                Hvile родился из простого наблюдения: самая значимая работа редко происходит среди постоянных
-                уведомлений и бесконечных списков задач. Она рождается в моменты тишины.
+                Находите ближайшую умную мусорку на карте в приложении. Подходите, сканируете QR-код на контейнере — это занимает секунду.
               </p>
               <p>
-                Мы создали инструмент, который уважает ритм глубокой работы — создаёт пространство для концентрации,
-                рефлексии и того сосредоточенного внимания, которое превращает обычные задачи в мастерство.
+                Выбираете категорию: бумага, стекло, пластик или пищевые отходы. Нужная урна автоматически открывается. Бонусные баллы начисляются на ваш счёт мгновенно — их можно обменять на реальные деньги.
               </p>
             </div>
             <div className="pt-4">
               <a href="#features" className="inline-flex items-center gap-2 text-foreground group">
-                <span className="border-b border-foreground pb-0.5">Наш подход</span>
+                <span className="border-b border-foreground pb-0.5">Все возможности</span>
                 <span className="text-terracotta group-hover:translate-x-1 transition-transform duration-300">→</span>
               </a>
             </div>

@@ -16,16 +16,16 @@ export function Contact() {
       <div className="max-w-2xl mx-auto text-center">
         <span className="text-sm uppercase tracking-widest text-muted-foreground mb-4 block">Начните</span>
         <h2 className="font-serif text-4xl md:text-5xl tracking-tight text-foreground mb-6 text-balance">
-          Готовы обрести покой?
+          Готовы зарабатывать на чистоте?
         </h2>
         <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
-          Присоединяйтесь к тысячам людей, открывших спокойный подход к работе. Оставьте email — мы поможем начать.
+          Оставьте email — мы пришлём ссылку на скачивание и расскажем, где находятся ближайшие умные мусорки в вашем городе.
         </p>
 
         {submitted ? (
           <div className="p-8 rounded-2xl bg-sage/10 border border-sage/20">
-            <p className="text-foreground font-serif text-2xl mb-2">Добро пожаловать в Hvile</p>
-            <p className="text-muted-foreground">Проверьте почту — мы отправили следующие шаги.</p>
+            <p className="text-foreground font-serif text-2xl mb-2">Добро пожаловать в ЭкоБонус!</p>
+            <p className="text-muted-foreground">Проверьте почту — мы отправили ссылку на приложение.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
@@ -41,7 +41,7 @@ export function Contact() {
               type="submit"
               className="px-8 py-4 bg-primary text-primary-foreground rounded-full hover:opacity-90 transition-opacity duration-300 whitespace-nowrap"
             >
-              Начать путь
+              Скачать приложение
             </button>
           </form>
         )}
