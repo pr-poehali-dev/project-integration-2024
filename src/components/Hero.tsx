@@ -1,7 +1,9 @@
 import Icon from "@/components/ui/icon";
 import { QrScanner } from "@/components/QrScanner";
+import { usePoints } from "@/context/PointsContext";
 
 export function Hero() {
+  const { points } = usePoints();
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-20 relative">
       <div className="max-w-4xl mx-auto text-center">
@@ -10,6 +12,16 @@ export function Hero() {
           <span className="w-2 h-2 rounded-full bg-sage" />
           <span className="text-sm">Сортируй мусор — получай бонусы</span>
         </div>
+
+        {/* Points counter */}
+        {points > 0 && (
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/20 mb-6 transition-all duration-500">
+            <Icon name="Coins" size={18} className="text-primary" />
+            <span className="text-sm font-medium text-foreground">
+              Ваши баллы: <span className="text-primary font-bold">{points}</span>
+            </span>
+          </div>
+        )}
 
         {/* Main heading with serif font */}
         <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl tracking-tight text-foreground leading-[1.1] text-balance mb-8">

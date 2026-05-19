@@ -1,17 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { Html5Qrcode } from "html5-qrcode";
 import Icon from "@/components/ui/icon";
+import { usePoints } from "@/context/PointsContext";
 
 type Step = "scan" | "category" | "success";
 
 const CATEGORIES = [
-  { id: "paper", label: "Бумага", emoji: "📄", color: "bg-blue-50 border-blue-200 hover:bg-blue-100", icon: "FileText" },
-  { id: "glass", label: "Стекло", emoji: "🍶", color: "bg-green-50 border-green-200 hover:bg-green-100", icon: "GlassWater" },
-  { id: "plastic", label: "Пластик", emoji: "♻️", color: "bg-yellow-50 border-yellow-200 hover:bg-yellow-100", icon: "Package" },
-  { id: "food", label: "Пищевые", emoji: "🥬", color: "bg-orange-50 border-orange-200 hover:bg-orange-100", icon: "Leaf" },
+  { id: "paper", label: "Бумага", emoji: "📄", color: "bg-blue-50 border-blue-200 hover:bg-blue-100" },
+  { id: "glass", label: "Стекло", emoji: "🍶", color: "bg-green-50 border-green-200 hover:bg-green-100" },
+  { id: "plastic", label: "Пластик", emoji: "♻️", color: "bg-yellow-50 border-yellow-200 hover:bg-yellow-100" },
+  { id: "food", label: "Пищевые", emoji: "🥬", color: "bg-orange-50 border-orange-200 hover:bg-orange-100" },
 ];
 
+const POINTS_PER_SCAN = 10;
+
 export function QrScanner() {
+  const { addPoints } = usePoints();
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState<Step>("scan");
   const [qrResult, setQrResult] = useState<string | null>(null);
@@ -70,7 +74,10 @@ export function QrScanner() {
   const handleCategorySelect = (id: string) => {
     setSelectedCategory(id);
     setOpening(true);
-    setTimeout(() => setStep("success"), 1200);
+    setTimeout(() => {
+      addPoints(POINTS_PER_SCAN);
+      setStep("success");
+    }, 1200);
   };
 
   return (
@@ -93,16 +100,11 @@ export function QrScanner() {
               <Icon name="X" size={20} />
             </button>
 
-            {/* ШАГ 1: Сканирование */}
             {step === "scan" && (
               <>
                 <h3 className="font-serif text-2xl text-foreground mb-1 text-center">Сканируйте QR-код</h3>
                 <p className="text-sm text-muted-foreground text-center mb-6">Наведите камеру на QR-код на мусорке</p>
-
-                {!error && (
-                  <div id="qr-reader" className="rounded-xl overflow-hidden" style={{ width: "100%" }} />
-                )}
-
+                {!error && <div id="qr-reader" className="rounded-xl overflow-hidden" style={{ width: "100%" }} />}
                 {error && (
                   <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-center">
                     <Icon name="CameraOff" size={32} className="text-red-400 mx-auto mb-2" />
@@ -112,7 +114,6 @@ export function QrScanner() {
               </>
             )}
 
-            {/* ШАГ 2: Выбор категории */}
             {step === "category" && (
               <>
                 <div className="flex items-center justify-center mb-2">
@@ -120,7 +121,6 @@ export function QrScanner() {
                   <h3 className="font-serif text-2xl text-foreground">Урна найдена!</h3>
                 </div>
                 <p className="text-sm text-muted-foreground text-center mb-6">Выберите категорию отходов</p>
-
                 <div className="grid grid-cols-2 gap-3">
                   {CATEGORIES.map((cat) => (
                     <button
@@ -134,7 +134,6 @@ export function QrScanner() {
                     </button>
                   ))}
                 </div>
-
                 {opening && (
                   <div className="mt-5 text-center">
                     <div className="inline-flex items-center gap-2 text-sage text-sm animate-pulse">
@@ -146,7 +145,6 @@ export function QrScanner() {
               </>
             )}
 
-            {/* ШАГ 3: Успех */}
             {step === "success" && (
               <div className="text-center py-4">
                 <div className="text-6xl mb-4 animate-bounce">🗑️</div>
@@ -156,7 +154,7 @@ export function QrScanner() {
                     {CATEGORIES.find(c => c.id === selectedCategory)?.label}
                   </span>
                 </p>
-                <p className="text-sage font-medium mt-3 mb-6">+10 баллов начислено 🎉</p>
+                <p className="text-sage font-medium mt-3 mb-6">+{POINTS_PER_SCAN} баллов начислено 🎉</p>
                 <button
                   onClick={handleClose}
                   className="px-8 py-3 bg-primary text-primary-foreground rounded-full text-sm hover:opacity-90 transition-opacity"
