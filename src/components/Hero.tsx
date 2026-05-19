@@ -1,4 +1,5 @@
 import Icon from "@/components/ui/icon";
+import { QrScanner } from "@/components/QrScanner";
 
 export function Hero() {
   return (
@@ -31,12 +32,7 @@ export function Hero() {
             Скачать приложение
             <Icon name="ArrowRight" size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
           </a>
-          <a
-            href="#philosophy"
-            className="inline-flex items-center gap-2 px-8 py-4 text-muted-foreground hover:text-foreground transition-colors duration-300"
-          >
-            Как это работает
-          </a>
+          <QrScanner />
         </div>
       </div>
 
